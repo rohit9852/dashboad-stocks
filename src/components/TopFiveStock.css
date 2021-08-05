@@ -1,0 +1,23 @@
+.wrapper {
+  background-color: #eee;
+}
+
+.header {
+  margin: 10px;
+  font-weight: bold;
+}
+.table {
+  background-color: #eee;
+  border-collapse: collapse;
+  margin: 10px;
+}
+.table th {
+  background-color: #000;
+  color: white;
+  width: 50%;
+}
+.table td,
+.table th {
+  padding: 5px;
+  border: 1px solid #000;
+}

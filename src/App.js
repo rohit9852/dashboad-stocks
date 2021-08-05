@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import StockList from "./components/stockList";
+import TopFiveStock from "./components/TopFiveStock";
+import "./styles.css";
 
-function App() {
+export default function App() {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [item, setItem] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonblob.com/api/d8906f08-f538-11eb-b3d6-75029a67fa99")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItem(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <h1 className="title">DashBoard</h1>
+      </div>
+      <div className="tables">
+        <StockList error={error} isLoaded={isLoaded} item={item} />
+        <TopFiveStock error={error} isLoaded={isLoaded} item={item} />
+      </div>
     </div>
   );
 }
-
-export default App;

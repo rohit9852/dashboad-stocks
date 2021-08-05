@@ -1,0 +1,14 @@
+.App {
+  font-family: sans-serif;
+}
+.title {
+  text-align: center;
+  margin: 30px;
+}
+.tables {
+  display: flex;
+  justify-content: center;
+}
+body {
+  background-color: rgb(124, 134, 165);
+}
